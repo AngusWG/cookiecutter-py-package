@@ -9,5 +9,5 @@
 
 ```bash
 pip install cookiecutter 
-cookiecutter https://github.com/tylerdave/cookiecutter-python-package.git
+cookiecutter https://github.com/AngusWG/cookiecutter-py-package.git
 ```
