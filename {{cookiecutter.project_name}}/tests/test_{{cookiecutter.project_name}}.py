@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_{{ cookiecutter.package_dir_name }}
+test_{{ cookiecutter.project_slug }}
 ----------------------------------
 
-Tests for `{{ cookiecutter.package_dir_name }}` module.
+Tests for `{{ cookiecutter.project_slug }}` module.
 """
 import pytest
 import {{ cookiecutter.project_slug }}
