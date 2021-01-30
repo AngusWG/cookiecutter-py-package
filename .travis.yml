@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "3.6"
+  - "pypy"
+
+before_install:
+  - pip install cookiecutter
+  - cookiecutter . --no-input
+
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install: pip install -r ./boiler-plate/requirements.txt
+
+script: cd ./boiler-plate && python setup.py test
