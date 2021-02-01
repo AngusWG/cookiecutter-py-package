@@ -83,3 +83,7 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
+
+requirements: ## make requirements.txt
+	pip install pipreqs  -i https://pypi.douban.com/simple/
+	pipreqs . --encoding utf8  --pypi-server https://pypi.douban.com/simple/ --force

@@ -11,5 +11,9 @@
     "ISC license",
     "Apache Software License 2.0",
     "GNU General Public License v3"
+  ],
+  "need_utils_code": [
+    "n",
+    "y"
   ]
 }

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/python3
+# encoding: utf-8
 from __future__ import print_function
 from ._version import get_versions
 

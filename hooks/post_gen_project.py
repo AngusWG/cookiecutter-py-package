@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
+# encoding: utf-8
 import os
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
@@ -12,3 +13,8 @@ if __name__ == '__main__':
 
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         remove_file('LICENSE')
+
+    if 'n' == '{{ cookiecutter.need_utils_code }}':
+        package_dir = "{{cookiecutter.project_slug}}"
+        remove_file(os.path.join(package_dir, "config.py"))
+        remove_file(os.path.join(package_dir, "env.py"))

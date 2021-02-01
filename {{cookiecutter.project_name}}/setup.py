@@ -1,6 +1,6 @@
+#!/usr/bin/python3
+# encoding: utf-8
 """A setuptools based setup module for {{ cookiecutter.project_slug }}"""
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 from codecs import open
 from os import path

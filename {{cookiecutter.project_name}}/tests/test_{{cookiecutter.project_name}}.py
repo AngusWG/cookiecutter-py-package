@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/python3
+# encoding: utf-8
 
 """
 test_{{ cookiecutter.project_slug }}
