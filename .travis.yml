@@ -9,6 +9,8 @@ before_install:
   - cookiecutter . --no-input
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r ./boiler-plate/requirements.txt
+install:
+  pip install -r ./python-boilerplate/requirements.txt
+  pip install -r ./python-boilerplate/requirements_dev.txt
 
-script: cd ./boiler-plate && python setup.py test
+script: cd ./python-boilerplate && python setup.py test
