@@ -1,0 +1,16 @@
+[html]
+directory =  {{ cookiecutter.project_slug }}_test_coverage_report
+title =  {{ cookiecutter.project_slug }}_frog_coverage_report
+
+[run]
+source =  {{ cookiecutter.project_slug }}
+concurrency = multiprocessing
+
+[report]
+omit =
+    *\_version.py
+    *pb2.py
+    *pb2_grpc.py
+
+fail_under = 65
+# coverage run --source grpc_frog -m pytest & coverage combine  & coverage report

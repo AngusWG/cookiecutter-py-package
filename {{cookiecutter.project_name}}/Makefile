@@ -56,6 +56,7 @@ test: ## run tests quickly with the default Python
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest
+	coverage combine
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
@@ -73,6 +74,8 @@ servedocs: docs ## compile the docs watching for changes
 
 release: dist ## package and upload a release
 	python setup.py sdist upload -v -r pypi
+
+check: lint clean-test test coverage ## run all import before commit
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
