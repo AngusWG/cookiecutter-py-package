@@ -7,8 +7,3 @@ __author__ = '{{ cookiecutter.github_username }}'
 __email__ = '{{ cookiecutter.email }}'
 __version__ = get_versions()['version']
 del get_versions
-
-
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
