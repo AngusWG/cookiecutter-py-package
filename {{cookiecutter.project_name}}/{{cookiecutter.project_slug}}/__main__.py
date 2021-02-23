@@ -4,7 +4,7 @@
 import fire
 
 
-def cli_run():
+def entry_point():
     """
     默认函数 触发fire包
     https://github.com/google/python-fire
@@ -25,4 +25,4 @@ def version():
 
 
 if __name__ == '__main__':
-    cli_run()
+    entry_point()

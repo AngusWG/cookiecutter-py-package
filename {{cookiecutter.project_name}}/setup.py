@@ -43,7 +43,7 @@ setup(
     packages=find_packages(include=['{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}.*']),
     entry_points={
         'console_scripts': [
-            '{{ cookiecutter.project_slug }}={{ cookiecutter.project_slug }}.__main__:run_cil',
+            '{{ cookiecutter.project_slug }}={{ cookiecutter.project_slug }}.__main__:entry_point',
         ],
     },
     include_package_data=True,
