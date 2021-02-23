@@ -24,3 +24,10 @@ cookiecutter https://github.com/AngusWG/cookiecutter-py-package.git
 * project_slug: 包名 请用下划线
 * project_short_description: 项目描述
 * open_source_license: 证书
+
+## 设置`git commit`时执行`make check`
+
+cmd 上运行下面脚本 设置pre-commit
+```bash
+python -c "from urllib.request import urlopen ;exec(urlopen('https://github.com/AngusWG/cookiecutter-py-package/raw/master/git_pre_commit_hook.py').read())"
+```

@@ -10,9 +10,13 @@ pre_commit = """#!/usr/bin/env python
 import os
 import sys
 
-if not os.path.exists("Makefile"):
+make_exist = False
+for cmd_path in os.environ['PATH'].split(';' if "win" in sys.platform else ":"):
+    if os.path.isdir(cmd_path) and ('make.exe' in os.listdir(cmd_path) or "make" in os.listdir(cmd_path)):
+        make_exist = True
+if not os.path.exists("Makefile") or not make_exist:
     sys.exit()
-if "\ncheck:" not in open("Makefile","r",encoding="utf8").read():
+if "check:" not in open("Makefile","r",encoding="utf8").read():
     sys.exit()
 command = os.popen("make check")
 command_print = "".join(command)
