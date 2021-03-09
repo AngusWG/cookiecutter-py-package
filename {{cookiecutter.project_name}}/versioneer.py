@@ -1,4 +1,3 @@
-
 # Version: 0.19
 
 """The Versioneer - like a rocketeer, but for versions.
@@ -341,6 +340,7 @@ def get_config_from_root(root):
         if parser.has_option("versioneer", name):
             return parser.get("versioneer", name)
         return None
+
     cfg = VersioneerConfig()
     cfg.VCS = VCS
     cfg.style = get(parser, "style") or ""
@@ -365,12 +365,14 @@ HANDLERS = {}
 
 def register_vcs_handler(vcs, method):  # decorator
     """Create decorator to mark a method as the handler of a VCS."""
+
     def decorate(f):
         """Store f in HANDLERS[vcs][method]."""
         if vcs not in HANDLERS:
             HANDLERS[vcs] = {}
         HANDLERS[vcs][method] = f
         return f
+
     return decorate
 
 
@@ -753,6 +755,28 @@ def render_pep440(pieces):
     return rendered
 
 
+def render_pep440_dev(pieces):
+    """TAG[.devDISTANCE.gHEX[.dirty]] .
+
+    Exceptions:
+    1: no tags. 0.devDISTANCE.gHEX[.dirty]
+    """
+    if pieces["closest-tag"]:
+        rendered = pieces["closest-tag"]
+        if pieces["distance"] or pieces["dirty"]:
+            rendered += ".dev%d" % pieces["distance"]
+            rendered += ".g%s" % pieces["short"]
+    else:
+        # exception #1
+        rendered = "0.dev%d" % pieces["distance"]
+        rendered += ".g%s" % pieces["short"]
+
+    if pieces["dirty"]:
+        rendered += ".dirty"
+
+    return rendered
+
+
 def render_pep440_pre(pieces):
     """TAG[.post0.devDISTANCE] -- No -dirty.
 
@@ -872,6 +896,8 @@ def render(pieces, style):
 
     if style == "pep440":
         rendered = render_pep440(pieces)
+    elif style == "pep440-dev":
+        rendered = render_pep440_dev(pieces)
     elif style == "pep440-pre":
         rendered = render_pep440_pre(pieces)
     elif style == "pep440-post":
@@ -1261,6 +1287,28 @@ def render_pep440(pieces):
     return rendered
 
 
+def render_pep440_dev(pieces):
+    """TAG[.devDISTANCE.gHEX[.dirty]] .
+
+    Exceptions:
+    1: no tags. 0.devDISTANCE.gHEX[.dirty]
+    """
+    if pieces["closest-tag"]:
+        rendered = pieces["closest-tag"]
+        if pieces["distance"] or pieces["dirty"]:
+            rendered += ".dev%d" % pieces["distance"]
+            rendered += ".g%s" % pieces["short"]
+    else:
+        # exception #1
+        rendered = "0.dev%d" % pieces["distance"]
+        rendered += ".g%s" % pieces["short"]
+
+    if pieces["dirty"]:
+        rendered += ".dirty"
+
+    return rendered
+
+
 def render_pep440_pre(pieces):
     """TAG[.post0.devDISTANCE] -- No -dirty.
 
@@ -1380,6 +1428,8 @@ def render(pieces, style):
 
     if style == "pep440":
         rendered = render_pep440(pieces)
+    elif style == "pep440-dev":
+        rendered = render_pep440_dev(pieces)
     elif style == "pep440-pre":
         rendered = render_pep440_pre(pieces)
     elif style == "pep440-post":
@@ -1528,6 +1578,7 @@ def get_cmdclass(cmdclass=None):
             print(" date: %s" % vers.get("date"))
             if vers["error"]:
                 print(" error: %s" % vers["error"])
+
     cmds["version"] = cmd_version
 
     # we override "build_py" in both distutils and setuptools
@@ -1566,6 +1617,7 @@ def get_cmdclass(cmdclass=None):
                                                   cfg.versionfile_build)
                 print("UPDATING %s" % target_versionfile)
                 write_to_version_file(target_versionfile, versions)
+
     cmds["build_py"] = cmd_build_py
 
     if "setuptools" in sys.modules:
@@ -1591,6 +1643,7 @@ def get_cmdclass(cmdclass=None):
                                               cfg.versionfile_source)
             print("UPDATING %s" % target_versionfile)
             write_to_version_file(target_versionfile, versions)
+
     cmds["build_ext"] = cmd_build_ext
 
     if "cx_Freeze" in sys.modules:  # cx_freeze enabled?
@@ -1622,6 +1675,7 @@ def get_cmdclass(cmdclass=None):
                              "PARENTDIR_PREFIX": cfg.parentdir_prefix,
                              "VERSIONFILE_SOURCE": cfg.versionfile_source,
                              })
+
         cmds["build_exe"] = cmd_build_exe
         del cmds["build_py"]
 
@@ -1648,6 +1702,7 @@ def get_cmdclass(cmdclass=None):
                              "PARENTDIR_PREFIX": cfg.parentdir_prefix,
                              "VERSIONFILE_SOURCE": cfg.versionfile_source,
                              })
+
         cmds["py2exe"] = cmd_py2exe
 
     # we override different "sdist" commands for both environments
@@ -1678,6 +1733,7 @@ def get_cmdclass(cmdclass=None):
             print("UPDATING %s" % target_versionfile)
             write_to_version_file(target_versionfile,
                                   self._versioneer_generated_versions)
+
     cmds["sdist"] = cmd_sdist
 
     return cmds
