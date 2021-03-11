@@ -18,7 +18,6 @@ if conf.sentry_dns:  # pragma: no cover
 
 
 def init_log(log):
-    """因为增加了uuid 所以需要改变basic的handler 设置默认uuid"""
     log.setLevel(conf.LOG_LEVEL)
     return log
 
