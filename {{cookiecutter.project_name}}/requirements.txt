@@ -1,2 +1,6 @@
 ipython
 fire
+{%- if cookiecutter.need_utils_code == "y" %}
+redis
+flask_mongoengine
+{%- endif %}

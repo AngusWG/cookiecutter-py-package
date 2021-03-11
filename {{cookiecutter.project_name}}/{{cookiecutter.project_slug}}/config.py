@@ -9,7 +9,8 @@ class Config:
     """
     大写字母的配置将读入flask app
     """
-    LOG_FORMAT = '[%(asctime)s] [%(uuid)s] [%(threadName)s:%(thread)d] [%(levelname)s]: %(message)s [%(pathname)s <%(lineno)d>]'
+    LOG_FORMAT = '[%(asctime)s] [%(uuid)s] [%(threadName)s:%(thread)d] [%(levelname)s]: ' \
+                 '%(message)s [%(pathname)s <%(lineno)d>]'
     LOG_LEVEL = "DEBUG"
 
     # import os ; print(os.urandom(24))
@@ -20,7 +21,7 @@ class Config:
     SQLALCHEMY_ENGINE_OPTIONS = {'pool_recycle': 1800}
 
     sentry_dns = None
-    redis_url = ""
+    redis_url = "redis://127.0.0.1:6379"
     SQLALCHEMY_DATABASE_URI = 'sqlite:///{{cookiecutter.project_slug}}.db'
     MONGODB_SETTINGS = {
         'DB': "{{cookiecutter.project_slug}}",

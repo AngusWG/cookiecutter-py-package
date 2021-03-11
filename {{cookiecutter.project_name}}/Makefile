@@ -59,7 +59,7 @@ coverage: ## check code coverage quickly with the default Python
 	coverage combine
 	coverage report -m
 	coverage html
-	$(BROWSER) htmlcov/index.html
+	# $(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.project_slug }}.rst
@@ -75,7 +75,7 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	python setup.py sdist upload -v -r pypi
 
-check: lint clean-test test coverage ## run all import before commit
+check: lint clean-test coverage ## run all import before commit
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist

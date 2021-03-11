@@ -12,7 +12,7 @@ def entry_point():
     fire.Fire()
 
 
-def ipython():
+def ipython():  # pragma: no cover
     """打开ipython命令"""
     from IPython import embed
     embed()

@@ -12,5 +12,15 @@ omit =
     *pb2.py
     *pb2_grpc.py
 
-fail_under = 65
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if conf.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:
+
+fail_under = 80
 # coverage run --source grpc_frog -m pytest & coverage combine  & coverage report

@@ -64,7 +64,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
-    extras_require={'dev_require': requirements + requirements_dev},
+    extras_require={'dev_require': requirements + "\n" + requirements_dev},
     ext_modules=ext_modules,
     keywords='{{ cookiecutter.project_slug }}',
 )
