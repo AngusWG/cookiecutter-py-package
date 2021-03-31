@@ -20,19 +20,26 @@ class Config:
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_ENGINE_OPTIONS = {'pool_recycle': 1800}
 
-    sentry_dns = None
-    redis_url = "redis://127.0.0.1:6379"
     SQLALCHEMY_DATABASE_URI = 'sqlite:///{{cookiecutter.project_slug}}.db'
     MONGODB_SETTINGS = {
         'DB': "{{cookiecutter.project_slug}}",
         "host": 'mongodb://<user>:<password>@127.0.0.1:27017/{{cookiecutter.project_slug}}'
     }
 
-    def __init__(self, config_path="config.yaml"):
+    sentry_dns = None
+    redis_url = "redis://127.0.0.1:6379"
+
+    def __init__(self):
+        _default_path = "{{cookiecutter.project_slug}}_config.yaml"
+        config_path = os.environ.get("{{cookiecutter.project_slug}}_config_path", _default_path)
+        if config_path != _default_path:
+            print("read config.yaml from : {}".format(config_path))
+
         if os.path.exists(config_path):
             with open(config_path, 'r', encoding="utf8") as f:
                 entries = yaml.load(f, Loader=yaml.FullLoader)
             self.__dict__.update(entries or {})
+            print("read {} values:".format(config_path))
             print(self.__dict__)
 
 

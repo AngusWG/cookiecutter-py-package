@@ -13,13 +13,13 @@ def entry_point():
 
 
 def ipython():  # pragma: no cover
-    """打开ipython命令"""
+    """ 打开ipython命令 """
     from IPython import embed
     embed()
 
 
 def version():
-    """显示当前版本"""
+    """ 显示当前版本 """
     import {{cookiecutter.project_slug}}
     print({{cookiecutter.project_slug}}.__version__)
 

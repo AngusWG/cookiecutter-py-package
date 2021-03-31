@@ -22,7 +22,7 @@ def init_log(log):
     return log
 
 
-logger = logging.getLogger("lk_asset")
+logger = logging.getLogger("{{cookiecutter.project_slug}}")
 init_log(logger)
 del init_log
 
