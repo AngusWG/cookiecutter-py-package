@@ -15,7 +15,3 @@ class CoreTest(testutils.BaseTestCase):
     def test_version_help_info(self):
         with self.assertRaisesFireExit(0, regexp='显示当前版本'):
             __main__.fire.Fire({"version": __main__.version}, command=['version', '--help'])
-
-    def test_help_info(self):
-        with self.assertOutputMatches(stdout='.*'):
-            __main__.entry_point()

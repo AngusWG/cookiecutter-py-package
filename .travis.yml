@@ -7,7 +7,7 @@ python:
   - "3.9"
 
 before_install:
-  - pip install cookiecutter
+  - pip install cookiecutter mock six
   - cookiecutter . --no-input
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
