@@ -18,3 +18,4 @@ if __name__ == '__main__':
         package_dir = "{{cookiecutter.project_slug}}"
         remove_file(os.path.join(package_dir, "config.py"))
         remove_file(os.path.join(package_dir, "env.py"))
+        remove_file(os.path.join(package_dir+ "_config.yaml"))
