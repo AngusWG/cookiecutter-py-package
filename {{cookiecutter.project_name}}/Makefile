@@ -76,7 +76,7 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	python setup.py sdist upload -v -r pypi
 
-check: lint coverage clean-test ## run all import before commit
+check: lint install coverage clean-test ## run all import before commit
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist

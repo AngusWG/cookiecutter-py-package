@@ -30,6 +30,11 @@ class Config:
     redis_url = "redis://127.0.0.1:6379"
 
     def __init__(self):
+        """
+        >>> os.environ["{{cookiecutter.project_slug}}_config_path"] = os.path.abspath("{{cookiecutter.project_slug}}_config.yaml")
+        >>> Config()
+        read config.yaml from...
+        """
         _default_path = "{{cookiecutter.project_slug}}_config.yaml"
         config_path = os.environ.get("{{cookiecutter.project_slug}}_config_path", _default_path)
         if config_path != _default_path:
