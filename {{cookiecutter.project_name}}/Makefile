@@ -47,6 +47,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -f .coverage
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
+	rm -fr *_coverage_report
 
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.project_slug }} tests
@@ -75,7 +76,7 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	python setup.py sdist upload -v -r pypi
 
-check: lint clean-test coverage ## run all import before commit
+check: lint coverage clean-test ## run all import before commit
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist

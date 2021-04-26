@@ -7,4 +7,6 @@ flask_mongoengine
 sentry_sdk
 pymysql
 sqlalchemy
+flask_sqlalchemy
+flask
 {%- endif %}
