@@ -2,3 +2,5 @@ pytest
 flake8
 coverage
 mock
+pytest-timeout
+pytest-benchmark

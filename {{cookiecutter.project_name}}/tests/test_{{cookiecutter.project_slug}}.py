@@ -38,8 +38,13 @@ class Test{{ cookiecutter.project_slug|capitalize }}:
     def teardown_method(self):
         pass
 
-    def test_something(self):
+    def test_something(self, benchmark):
         assert {{ cookiecutter.project_slug}}.__version__
+        from {{cookiecutter.project_slug}} import __main__
+        # asset cost time
+        benchmark(__main__.version())
+        assert benchmark.state.state.max < 0.01
+
 
 {%- if cookiecutter.need_utils_code == "y" %}
     def test_config(self):
