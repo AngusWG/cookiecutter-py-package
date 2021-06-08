@@ -24,10 +24,13 @@ jobs:
 
       - name: Install
         run: |
-          pip install -r ./python-boilerplate/requirements.txt
           pip install -r ./python-boilerplate/requirements_dev.txt
+          pip install -r ./python-boilerplate/requirements.txt
 
       - name: test
         run: |
-          cd ./python-boilerplate && python setup.py test
+          cd ./python-boilerplate
+          isort python_boilerplate tests --profile black --check-only
+          flake8 python_boilerplate tests
+          python setup.py test
 
