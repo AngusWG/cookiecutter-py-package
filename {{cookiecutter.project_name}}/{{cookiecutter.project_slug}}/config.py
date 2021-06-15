@@ -45,7 +45,7 @@ class Config:
 
         if os.path.exists(config_path):
             with open(config_path, "r", encoding="utf8") as f:
-                entries = yaml.load(f, Loader=yaml.FullLoader)
+                entries = yaml.safe_load(f)
             self.__dict__.update(entries or {})
             print("read {} values:".format(config_path))
             print(self.__dict__)

@@ -22,9 +22,7 @@ def response():
     # return requests.get("https://github.com/audreyr/cookiecutter-pypackage")
 
 
-
 class Test{{ cookiecutter.project_slug|capitalize }}:
-
     @classmethod
     def setup_class(cls):
         pass
