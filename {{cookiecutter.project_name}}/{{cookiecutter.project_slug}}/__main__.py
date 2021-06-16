@@ -9,6 +9,7 @@ def entry_point() -> None:  # pragma: no cover
     默认函数 触发fire包
     https://github.com/google/python-fire
     """
+    fire.core.Display = lambda lines, out: print(*lines, file=out)
     fire.Fire()
 
 
@@ -19,11 +20,11 @@ def ipython() -> None:  # pragma: no cover
     embed()
 
 
-def version() -> None:
+def version() -> str:
     """显示当前版本"""
     import {{cookiecutter.project_slug}}
 
-    print({{cookiecutter.project_slug}}.__version__)
+    return {{cookiecutter.project_slug}}.__version__
 
 
 if __name__ == "__main__":
