@@ -49,8 +49,14 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 	rm -fr *_coverage_report
 
+format: ## format python code
+	black {{ cookiecutter.project_slug }} tests
+	isort {{ cookiecutter.project_slug }} tests --profile black
+
 lint: ## check style with flake8
 	flake8 {{ cookiecutter.project_slug }} tests
+	black {{ cookiecutter.project_slug }} tests --check
+	isort {{ cookiecutter.project_slug }} tests --check-only --profile black
 
 test: ## run tests quickly with the default Python
 	pytest

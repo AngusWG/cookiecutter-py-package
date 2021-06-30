@@ -11,13 +11,10 @@ from flask_sqlalchemy import SQLAlchemy
 from {{cookiecutter.project_slug}}.config import conf
 
 if conf.sentry_dns:  # pragma: no cover
-    sentry_sdk.init(
-        dsn=conf.sentry_dns,
-        traces_sample_rate=1.0
-    )
+    sentry_sdk.init(dsn=conf.sentry_dns, traces_sample_rate=1.0)
 
 
-def init_log(log):
+def init_log(log: logging.Logger) -> logging.Logger:
     log.setLevel(conf.LOG_LEVEL)
     return log
 

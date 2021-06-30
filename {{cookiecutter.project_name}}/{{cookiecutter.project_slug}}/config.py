@@ -9,21 +9,24 @@ class Config:
     """
     大写字母的配置将读入flask app
     """
-    LOG_FORMAT = '[%(asctime)s] [%(uuid)s] [%(threadName)s:%(thread)d] [%(levelname)s]: ' \
-                 '%(message)s [%(pathname)s <%(lineno)d>]'
+
+    LOG_FORMAT = (
+        "[%(asctime)s] [%(uuid)s] [%(threadName)s:%(thread)d] [%(levelname)s]: "
+        "%(message)s [%(pathname)s <%(lineno)d>]"
+    )
     LOG_LEVEL = "DEBUG"
 
     # import os ; print(os.urandom(24))
-    SECRET_KEY = b''
+    SECRET_KEY = b""
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_ECHO = False
-    SQLALCHEMY_ENGINE_OPTIONS = {'pool_recycle': 1800}
+    SQLALCHEMY_ENGINE_OPTIONS = {"pool_recycle": 1800}
 
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{{cookiecutter.project_slug}}.db'
+    SQLALCHEMY_DATABASE_URI = "sqlite:///{{cookiecutter.project_slug}}.db"
     MONGODB_SETTINGS = {
-        'DB': "{{cookiecutter.project_slug}}",
-        "host": 'mongodb://<user>:<password>@127.0.0.1:27017/{{cookiecutter.project_slug}}'
+        "DB": "{{cookiecutter.project_slug}}",
+        "host": "mongodb://<user>:<password>@127.0.0.1:27017/{{cookiecutter.project_slug}}",
     }
 
     sentry_dns = None
@@ -41,8 +44,8 @@ class Config:
             print("read config.yaml from : {}".format(config_path))
 
         if os.path.exists(config_path):
-            with open(config_path, 'r', encoding="utf8") as f:
-                entries = yaml.load(f, Loader=yaml.FullLoader)
+            with open(config_path, "r", encoding="utf8") as f:
+                entries = yaml.safe_load(f)
             self.__dict__.update(entries or {})
             print("read {} values:".format(config_path))
             print(self.__dict__)
