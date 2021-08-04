@@ -24,4 +24,3 @@
 > Use flake8 to check your code style.
 
 * This project is made by [AngusWG/cookiecutter-py-package](https://github.com/AngusWG/cookiecutter-py-package.git)
-
