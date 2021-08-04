@@ -4,6 +4,16 @@
 
 {{ cookiecutter.project_short_description}}
 
+* TODO
+
+## Features
+
+---
+
+* TODO
+
+---
+
 * [Black formatter](https://github.com/psf/black)
 
 > This project use black, please set `Continuation indent` = 4  
@@ -13,10 +23,5 @@
 
 > Use flake8 to check your code style.
 
-* TODO
+* This project is made by [AngusWG/cookiecutter-py-package](https://github.com/AngusWG/cookiecutter-py-package.git)
 
-## Features
-
----
-
-* TODO
