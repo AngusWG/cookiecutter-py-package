@@ -25,7 +25,9 @@ cookiecutter https://github.com/AngusWG/cookiecutter-py-package.git
 * project_short_description: 项目描述
 * open_source_license: 证书
 
-## 设置`git commit`时执行`make check`
+---
+
+* 设置`git commit`时执行`make check`
 
 cmd 上运行下面脚本 设置pre-commit
 ```bash

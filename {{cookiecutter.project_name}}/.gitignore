@@ -107,3 +107,4 @@ ENV/
 
 *.c
 config.yaml
+{{cookiecutter.project_slug}}_test_coverage_report
