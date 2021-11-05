@@ -2,6 +2,7 @@
 # encoding: utf-8
 """ {{cookiecutter.project_slug}} 's entry_points"""
 import fire
+
 # noinspection PyUnresolvedReferences
 from traceback_with_variables import activate_by_import
 
