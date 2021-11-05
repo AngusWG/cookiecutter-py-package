@@ -1,6 +1,7 @@
 ipython
 fire
 PyYAML
+traceback_with_variables
 {%- if cookiecutter.need_utils_code == "y" %}
 redis
 flask_mongoengine
