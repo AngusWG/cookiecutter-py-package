@@ -3,10 +3,10 @@
 """ {{cookiecutter.project_slug}} 's entry_points"""
 import fire
 
-# noinspection PyUnresolvedReferences
-from traceback_with_variables import activate_by_import
+from traceback_with_variables import prints_exc
 
 
+@prints_exc
 def entry_point() -> None:  # pragma: no cover
     """
     默认函数 触发fire包
