@@ -12,6 +12,7 @@ class Config:
     """
     大写字母的配置将读入flask app
     """
+    project_name = "{{cookiecutter.project_slug}}"
 
     LOG_FORMAT = (
         "[%(asctime)s] [%(uuid)s] [%(threadName)s:%(thread)d] [%(levelname)s]: "
@@ -19,7 +20,6 @@ class Config:
     )
     LOG_LEVEL = "INFO"
 
-    # import os ; print(os.urandom(24))
     SECRET_KEY = b""
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True

@@ -15,11 +15,13 @@ if conf.sentry_dns:  # pragma: no cover
 
 
 def init_log(log: logging.Logger) -> logging.Logger:
+    base_handler = logging.StreamHandler()
+    logging.basicConfig(handlers=[base_handler], format=conf.LOG_FORMAT)
     log.setLevel(conf.LOG_LEVEL)
     return log
 
 
-logger = logging.getLogger("{{cookiecutter.project_slug}}")
+logger = logging.getLogger(conf.project_name)
 init_log(logger)
 del init_log
 
