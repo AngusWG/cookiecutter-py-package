@@ -11,12 +11,12 @@
 """Git implementation of _version.py."""
 
 import errno
+import functools
 import os
 import re
 import subprocess
 import sys
 from typing import Any, Callable, Dict, List, Optional, Tuple
-import functools
 
 
 def get_keywords() -> Dict[str, str]:
@@ -138,7 +138,7 @@ def versions_from_parentdir(
     """Try to determine the version from the parent directory name.
 
     Source tarballs conventionally unpack into a directory that includes both
-    the project name and a version string. We will also support searching up
+    the projects name and a version string. We will also support searching up
     two directory levels for an appropriately named parent directory
     """
     rootdirs = []
@@ -282,7 +282,7 @@ def git_pieces_from_vcs(
         GITS = ["git.cmd", "git.exe"]
 
     # GIT_DIR can interfere with correct operation of Versioneer.
-    # It may be intended to be passed to the Versioneer-versioned project,
+    # It may be intended to be passed to the Versioneer-versioned projects,
     # but that should not change where we get our version from.
     env = os.environ.copy()
     env.pop("GIT_DIR", None)
