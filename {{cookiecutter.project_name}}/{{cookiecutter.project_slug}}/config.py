@@ -59,8 +59,9 @@ class Config:
             with open(self.{{cookiecutter.project_slug}}_config_path, "r", encoding="utf8") as f:
                 entries = yaml.safe_load(f)
             self.__dict__.update(entries or {})
-            print("read {} values: {}".format(self.{{cookiecutter.project_slug}}_config_path), entries)
+            print("read {} values: {}".format(self.{{cookiecutter.project_slug}}_config_path, entries))
 
         print("=== Prepare {{cookiecutter.project_slug}} config finish===")
+
 
 conf = Config()
