@@ -1,12 +1,12 @@
 ipython
 fire
 PyYAML
-traceback_with_variables
+traceback-with-variables
 python-dotenv
 {%- if cookiecutter.need_utils_code == "y" %}
 redis
 flask_mongoengine
-sentry_sdk
+sentry-sdk
 pymysql
 sqlalchemy
 flask_sqlalchemy
