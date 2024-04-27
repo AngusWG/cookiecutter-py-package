@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # encoding: utf-8
 import os
+import typing
 
 import yaml
 from dotenv import load_dotenv
@@ -40,8 +41,8 @@ class Config:
     def __init__(self):
         """
         >>> os.environ["{{cookiecutter.project_slug}}_config_path"] = os.path.abspath("{{cookiecutter.project_slug}}_config.yaml")
-        >>> Config()
-        read config.yaml from...
+        >>> Config() # doctest: +ELLIPSIS
+        === Prepare ...
         """
         print("=== Prepare {{cookiecutter.project_slug}} config start ===")
 
@@ -51,8 +52,13 @@ class Config:
         for var_name in uppercase_vars:
             env_value = os.environ.get(var_name)
             if env_value is not None:
-                print(f"read from ENVIRON: var_name = {env_value}")
-                setattr(self, var_name, env_value)
+                var_type = typing.get_type_hints(Config).get(
+                    var_name, str
+                )  # default string
+                if var_type is bool and env_value.lower() in ("false", "f", "no", "0"):
+                    env_value = False
+                print(f"read from ENVIRON: {var_name} = {env_value}")
+                setattr(self, var_name, var_type(env_value))
 
         # read config from config file
         if os.path.exists(self.{{cookiecutter.project_slug}}_config_path):
