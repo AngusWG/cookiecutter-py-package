@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # encoding: utf-8
-""" {{cookiecutter.project_slug}} 's entry_points"""
+"""{{cookiecutter.project_slug}} 's entry_points"""
 import fire
 from traceback_with_variables import prints_exc
 

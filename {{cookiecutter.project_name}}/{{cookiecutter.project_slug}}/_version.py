@@ -51,8 +51,8 @@ def get_config() -> VersioneerConfig:
     cfg.VCS = "git"
     cfg.style = "pep440"
     cfg.tag_prefix = ""
-    cfg.parentdir_prefix = "crawler_utils"
-    cfg.versionfile_source = "crawler_utils/_version.py"
+    cfg.parentdir_prefix = "{{cookiecutter.project_slug}}"
+    cfg.versionfile_source = "{{cookiecutter.project_slug}}/_version.py"
     cfg.verbose = False
     return cfg
 
@@ -138,7 +138,7 @@ def versions_from_parentdir(
     """Try to determine the version from the parent directory name.
 
     Source tarballs conventionally unpack into a directory that includes both
-    the projects name and a version string. We will also support searching up
+    the project name and a version string. We will also support searching up
     two directory levels for an appropriately named parent directory
     """
     rootdirs = []
@@ -282,7 +282,7 @@ def git_pieces_from_vcs(
         GITS = ["git.cmd", "git.exe"]
 
     # GIT_DIR can interfere with correct operation of Versioneer.
-    # It may be intended to be passed to the Versioneer-versioned projects,
+    # It may be intended to be passed to the Versioneer-versioned project,
     # but that should not change where we get our version from.
     env = os.environ.copy()
     env.pop("GIT_DIR", None)

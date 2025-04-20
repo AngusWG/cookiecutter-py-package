@@ -1,8 +1,8 @@
-FROM python:3.9.1-buster
+FROM python:3.12.9
 
 ARG PKG
 COPY requirements.txt /tmp
-RUN pip3 install -i https://pypi.douban.com/simple -r /tmp/requirements.txt
+RUN pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -r /tmp/requirements.txt
 COPY PKG /tmp
 RUN pip3 install /tmp/${PKG}
 
