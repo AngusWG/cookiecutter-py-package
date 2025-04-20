@@ -50,7 +50,8 @@ class Config:
         uppercase_vars = [var for var in vars(Config) if not var.startswith("__")]
 
         for var_name in uppercase_vars:
-            env_value = os.environ.get(var_name)
+            _var_name = (self.project_name + "__" + var_name).upper()
+            env_value = os.environ.get(_var_name)
             if env_value is not None:
                 var_type = typing.get_type_hints(Config).get(
                     var_name, str

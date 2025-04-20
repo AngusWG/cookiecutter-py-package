@@ -29,7 +29,6 @@ help:
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
-	pip config set global.index-url https://pypi.douban.com/simple
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
